@@ -40,7 +40,7 @@ function upload() {
         });
 }
 
-function showErr() {
+function copyUrl() {
     const btn = document.getElementById("btn-copy");
 
     navigator.clipboard.writeText(document.getElementById("link").innerText);
