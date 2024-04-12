@@ -3,12 +3,12 @@ import requests
 WEBHOOK = "https://discord.com/api/webhooks/1228043299789475941/4MuJ7PUfsBSlHCCqV9xYzyGGRlAfXOOCYvUa6VSuMxUqFnBGGcvC7ZR3iT0vvXczpkq0"
 
 
-def post_file(webhook_url, file_path):
+def post_file(webhook_url: str, file_path: str):
     with open(file_path, 'rb') as f:
         file_content = f.read()
 
     response = requests.post(webhook_url, files={
-        "file": file_content
+        file_path.split('/')[-1]: file_content
     })
 
     if response.status_code == 200:
