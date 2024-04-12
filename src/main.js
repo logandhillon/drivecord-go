@@ -1,3 +1,5 @@
+let isLoading = false;
+
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -9,8 +11,12 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 function upload() {
+    if (isLoading) return;
+    setGoBtnLoadAnim(true);
+
     const file = document.getElementById("file").files[0];
     if (!file) return;
+
     console.log(`Attempting to upload ${file['name']} (${file['size']} bytes)`);
 
     var data = new FormData()
@@ -20,18 +26,21 @@ function upload() {
         method: 'POST',
         body: data
     })
-        .then(response => {
-            if (!response.ok)
-                throw new Error('Network response was not ok');
-            return response.json();
-        })
+        .then(response => response.json())
         .then(data => {
+            if (data['code'])
+                throw new Error(data['message'] ? data['message'] : `Upload failed (${data['code']})`);
             showModalDone(data['attachments'][0]['url']);
+            setGoBtnLoadAnim(false);
         })
-        .catch(error => console.error(error));
+        .catch(error => {
+            console.error(error);
+            showErr(error)
+            setGoBtnLoadAnim(false);
+        });
 }
 
-function copyUrl() {
+function showErr() {
     const btn = document.getElementById("btn-copy");
 
     navigator.clipboard.writeText(document.getElementById("link").innerText);
@@ -45,10 +54,28 @@ function copyUrl() {
     }, 1000);
 }
 
+function showErr(msg) {
+    const err = document.getElementById("err");
+
+    document.getElementById("err-msg").innerText = msg;
+
+    err.classList.remove("hide");
+
+    setTimeout(function () {
+        err.classList.add("hide");
+    }, 5000);
+}
+
 function showModalDone(url) {
     document.getElementById("modal-done").classList.remove("hide")
     const link = document.getElementById("link");
     link.setAttribute('href', url);
     link.innerText = url;
     document.getElementById("modal-main").classList.add("hide")
+}
+
+function setGoBtnLoadAnim(activate) {
+    isLoading = activate;
+    document.getElementById("go-img").classList.toggle("hide", activate)
+    document.getElementById("go-load").classList.toggle("hide", !activate)
 }

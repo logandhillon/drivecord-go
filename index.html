@@ -26,11 +26,19 @@
             </div>
         </header>
 
+        <div id="err" class="bg-red-500 p-5 flex items-center space-x-2 opacity-100 hide transition-all">
+            <i class="fa-solid fa-circle-exclamation text-xl"></i>
+            <p class="m-0" id="err-msg">An unknown error occurred</p>
+        </div>
+
         <main class="flex flex-col items-center justify-center flex-grow">
             <div id="modal-main" class="relative bg-neutral-700 border-dashed border-neutral-400 border rounded-2xl w-96 h-64 m-5 p-5">
                 <h1 class="border-b pb-2 mb-2"><i class="fa-solid fa-upload"></i> Quick upload files</h1>
-                <input type="file" id="file">
-                <button type="button" onclick="upload()" class="absolute bottom-4 right-4 p-0 bg-discord-green"><img src="/res/go-button.svg" alt="Upload with GO"></button>
+                <input type="file" id="file" class="max-w-80">
+                <button type="button" onclick="upload()" class="absolute bottom-4 right-4 p-0 bg-discord-green text-green-800 w-20 h-10 flex items-center justify-center">
+                    <img id="go-img" src="/res/go-button.svg" alt="Upload with GO">
+                    <i id="go-load" class="fa-solid fa-circle-notch fa-spin px-5 py-2 text-2xl hide"></i>
+                </button>
             </div>
 
             <div id="modal-done" class="bg-neutral-700 rounded-2xl w-96 m-5 p-5 hide">
