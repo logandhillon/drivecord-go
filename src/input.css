@@ -10,10 +10,18 @@ h3 {
     @apply text-lg font-semibold mt-4 mb-2;
 }
 
+h4 {
+    @apply font-semibold;
+}
+
 p {
     @apply mt-2;
 }
 
 a {
     @apply hover:border-b transition-all duration-100;
+}
+
+button {
+    @apply bg-blurple text-white p-2 rounded-lg text-sm;
 }

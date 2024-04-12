@@ -25,10 +25,21 @@
         </header>
 
         <main class="flex flex-col items-center justify-center flex-grow">
-            <div class="bg-neutral-700 border-dashed border-neutral-400 border rounded-2xl w-96 h-64 m-5 p-5 space-y-5 text-center flex flex-col justify-center">
-                <i class="fa-solid fa-upload text-6xl"></i>
+            <div class="relative bg-neutral-700 border-dashed border-neutral-400 border rounded-2xl w-96 h-64 m-5 p-5">
+                <h1 class="border-b pb-2 mb-2"><i class="fa-solid fa-upload"></i> Quick upload files</h1>
                 <input type="file" id="file">
-                <button type="button" onclick="upload()"><img src="/res/go-button.svg" alt="Upload with GO"></button>
+                <button type="button" onclick="upload()" class="absolute bottom-4 right-4 p-0"><img src="/res/go-button.svg" alt="Upload with GO"></button>
+            </div>
+
+            <!-- Hide this later, show w JS -->
+            <div class="bg-neutral-700 rounded-2xl w-96 m-5 p-5">
+                <h1 class="border-b pb-2 mb-2"><i class="fa-solid fa-cloud-arrow-up"></i> Upload complete!</h1>
+                <div class="flex items-center mt-4 space-x-2">
+                    <h4>Download URL</h4>
+                    <i class="fa-solid fa-copy text-neutral-400"></i>
+                </div>
+                <p><a id="link">Please wait…</a></p>
+                <button type="button" class="mt-8">Upload more files</button>
             </div>
         </main>
     </div>
