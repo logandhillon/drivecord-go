@@ -25,11 +25,10 @@
         </header>
 
         <main class="flex flex-col items-center justify-center flex-grow">
-            <div
-                class="bg-neutral-700 border-dashed border-neutral-400 border rounded-2xl w-96 h-64 m-5 p-5 space-y-5 text-center flex flex-col justify-center">
+            <div class="bg-neutral-700 border-dashed border-neutral-400 border rounded-2xl w-96 h-64 m-5 p-5 space-y-5 text-center flex flex-col justify-center">
                 <i class="fa-solid fa-upload text-6xl"></i>
-                <p><span class="font-semibold">Drop a file</span> here to upload, or<br><a href="#"
-                        class="font-semibold border-b">click here to browse</a></p>
+                <input type="file" id="file">
+                <button type="button" onclick="upload()"><img src="/res/go-button.svg" alt="Upload with GO"></button>
             </div>
         </main>
     </div>
