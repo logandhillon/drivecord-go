@@ -25,3 +25,7 @@ a {
 button {
     @apply bg-blurple text-white p-2 rounded-lg text-sm;
 }
+
+.hide {
+    @apply hidden;
+}

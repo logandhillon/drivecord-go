@@ -13,33 +13,34 @@
 
 <body class="bg-neutral-800 text-white overflow-x-hidden">
     <div class="min-h-screen flex flex-col">
-        <header class="flex justify-between items-center p-5 border-b border-neutral-900">
-            <img src="/res/drivecord-go-wordmark.svg" alt="">
-            <nav class="text-right">
-                <ul class="space-x-5 hidden sm:flex">
-                    <li><a href="#about">about</a></li>
-                    <li><a href="#faq">faq</a></li>
-                    <li><a href="https://github.com/logandhillon/drivecord-go">source code</a></li>
-                </ul>
-            </nav>
+        <header class=" p-5 border-b border-neutral-900">
+            <div class="flex justify-between items-center">
+                <img src="/res/drivecord-go-wordmark.svg" alt="">
+                <nav class="text-right">
+                    <ul class="space-x-5 hidden sm:flex">
+                        <li><a href="#about">about</a></li>
+                        <li><a href="#faq">faq</a></li>
+                        <li><a href="https://github.com/logandhillon/drivecord-go">source code</a></li>
+                    </ul>
+                </nav>
+            </div>
         </header>
 
         <main class="flex flex-col items-center justify-center flex-grow">
-            <div class="relative bg-neutral-700 border-dashed border-neutral-400 border rounded-2xl w-96 h-64 m-5 p-5">
+            <div id="modal-main" class="relative bg-neutral-700 border-dashed border-neutral-400 border rounded-2xl w-96 h-64 m-5 p-5">
                 <h1 class="border-b pb-2 mb-2"><i class="fa-solid fa-upload"></i> Quick upload files</h1>
                 <input type="file" id="file">
-                <button type="button" onclick="upload()" class="absolute bottom-4 right-4 p-0"><img src="/res/go-button.svg" alt="Upload with GO"></button>
+                <button type="button" onclick="upload()" class="absolute bottom-4 right-4 p-0 bg-discord-green"><img src="/res/go-button.svg" alt="Upload with GO"></button>
             </div>
 
-            <!-- Hide this later, show w JS -->
-            <div class="bg-neutral-700 rounded-2xl w-96 m-5 p-5">
+            <div id="modal-done" class="bg-neutral-700 rounded-2xl w-96 m-5 p-5 hide">
                 <h1 class="border-b pb-2 mb-2"><i class="fa-solid fa-cloud-arrow-up"></i> Upload complete!</h1>
                 <div class="flex items-center mt-4 space-x-2">
                     <h4>Download URL</h4>
-                    <i class="fa-solid fa-copy text-neutral-400"></i>
+                    <i id="btn-copy" class="fa-solid fa-copy text-neutral-400 hover:scale-110 transition-all duration-50" onclick="copyUrl()"></i>
                 </div>
-                <p><a id="link">Please wait…</a></p>
-                <button type="button" class="mt-8">Upload more files</button>
+                <p class="truncate text-blue-400 border-blue-400 mt-0"><a id="link">Please wait…</a></p>
+                <button type="button" class="mt-8" onclick="window.location.reload()">Upload more files</button>
             </div>
         </main>
     </div>
@@ -63,7 +64,7 @@
         </p>
 
         <h3>Can I get banned from Discord?</h3>
-        <p>Your account is not connected to Drivecord or Drivecord GO in any way.</p>
+        <p>Your Discord account is not connected to Drivecord or Drivecord GO in any way.</p>
     </section>
 
     <footer class="text-center text-sm bg-black p-5 mt-4">

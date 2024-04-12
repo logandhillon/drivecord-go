@@ -26,7 +26,29 @@ function upload() {
             return response.json();
         })
         .then(data => {
-            console.log(data['attachments'][0]['url']);
+            showModalDone(data['attachments'][0]['url']);
         })
         .catch(error => console.error(error));
+}
+
+function copyUrl() {
+    const btn = document.getElementById("btn-copy");
+
+    navigator.clipboard.writeText(document.getElementById("link").innerText);
+
+    btn.classList.toggle("fa-copy");
+    btn.classList.toggle("fa-check");
+
+    setTimeout(function () {
+        btn.classList.toggle("fa-copy");
+        btn.classList.toggle("fa-check");
+    }, 1000);
+}
+
+function showModalDone(url) {
+    document.getElementById("modal-done").classList.remove("hide")
+    const link = document.getElementById("link");
+    link.setAttribute('href', url);
+    link.innerText = url;
+    document.getElementById("modal-main").classList.add("hide")
 }
