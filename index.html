@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,45 +8,58 @@
     <link rel="shortcut icon" href="/res/drivecord-go-bot-profile.png" type="image/x-icon">
     <link rel="stylesheet" href="/src/output.css">
     <script src="https://kit.fontawesome.com/5a740087a2.js" crossorigin="anonymous"></script>
+    <script src="/src/main.js"></script>
 </head>
+
 <body class="bg-neutral-800 text-white overflow-x-hidden">
     <div class="min-h-screen flex flex-col">
         <header class="flex justify-between items-center p-5 border-b border-neutral-900">
             <img src="/res/drivecord-go-wordmark.svg" alt="">
-            <nav class="space-x-5 text-right hidden sm:flex">
-                <a href="#">about</a>
-                <a href="#">faq</a>
-                <a href="https://github.com/logandhillon/drivecord-go">source code</a>
+            <nav class="text-right">
+                <ul class="space-x-5 hidden sm:flex">
+                    <li><a href="#about">about</a></li>
+                    <li><a href="#faq">faq</a></li>
+                    <li><a href="https://github.com/logandhillon/drivecord-go">source code</a></li>
+                </ul>
             </nav>
         </header>
-    
+
         <main class="flex flex-col items-center justify-center flex-grow">
-            <div class="bg-neutral-700 border-dashed border-neutral-400 border rounded-2xl w-96 h-64 m-5 p-5 space-y-5 text-center flex flex-col justify-center">
+            <div
+                class="bg-neutral-700 border-dashed border-neutral-400 border rounded-2xl w-96 h-64 m-5 p-5 space-y-5 text-center flex flex-col justify-center">
                 <i class="fa-solid fa-upload text-6xl"></i>
-                <p><span class="font-semibold">Drop a file</span> here to upload, or<br><a href="#" class="font-semibold border-b">click here to browse</a></p>
+                <p><span class="font-semibold">Drop a file</span> here to upload, or<br><a href="#"
+                        class="font-semibold border-b">click here to browse</a></p>
             </div>
         </main>
     </div>
 
     <section class="p-5 container mx-auto">
-        <h2>About</h2>
-        <p class="mb-8">Drivecord is a project made <span class="font-semibold italic">for educational purposes</span>, made to store your files using Discord's content delivery network (CDN).</p>
+        <h2 id="about">About</h2>
+        <p class="mb-8">Drivecord is a project made <span class="font-semibold italic">for educational purposes</span>,
+            made to store your files using Discord's content delivery network (CDN).</p>
 
-        <h2>FAQ</h2>
-        
+        <h2 id="faq">FAQ</h2>
+
         <h3>How does it work?</h3>
-        <p>Your files are processed locally on your web browser, using client-sided JavaScript, then are posted to a private Discord server using a webhook. Drivecord GO does not store any pointers to these files, the URLs you generate are entirely static.</p>
+        <p>Your files are processed locally on your web browser, using client-sided JavaScript, then are posted to a
+            private Discord server using a webhook. Drivecord GO does not store any pointers to these files, the URLs
+            you generate are entirely static.</p>
 
         <h3>Is it secure?</h3>
-        <p>Yes, if you enable encryption. Encryption will encrypt your files with a random key, ensuring no one without the key can read the files.</p>
-        <p>Disabling encryption will store your files on the Discord server in source format, which is not recommended.</p>
+        <p>Yes, if you enable encryption. Encryption will encrypt your files with a random key, ensuring no one without
+            the key can read the files.</p>
+        <p>Disabling encryption will store your files on the Discord server in source format, which is not recommended.
+        </p>
 
         <h3>Can I get banned from Discord?</h3>
         <p>Your account is not connected to Drivecord or Drivecord GO in any way.</p>
     </section>
 
     <footer class="text-center text-sm bg-black p-5 mt-4">
-        <p class="container mx-auto">© 2024 Logan Dhillon. This program is made for educational purposes only. The author is not liable for any harm or damages caused from using this program.</p>
+        <p class="container mx-auto">© 2024 Logan Dhillon. This program is made for educational purposes only. The
+            author is not liable for any harm or damages caused from using this program.</p>
     </footer>
 </body>
+
 </html>
