@@ -1,4 +1,5 @@
 let isLoading = false;
+const UPLOAD_LIMIT = 25 * 1024 * 1024;
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -28,6 +29,11 @@ function upload() {
     const file = document.getElementById("file").files[0];
     if (!file) {
         showErr("No file selected.")
+        return;
+    }
+
+    if (file['size'] > UPLOAD_LIMIT) {
+        showErr("File too large. Upload limit is 25 MB.")
         return;
     }
 
