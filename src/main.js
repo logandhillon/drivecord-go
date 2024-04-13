@@ -10,6 +10,18 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+function formatBytes(bytes) {
+    const units = ['bytes', 'KB', 'MB', 'GB', 'TB'];
+    let unitIndex = 0;
+    
+    while (bytes >= 1024 && unitIndex < units.length - 1) {
+        bytes /= 1024;
+        unitIndex++;
+    }
+    
+    return bytes.toFixed(2) + ' ' + units[unitIndex];
+}
+
 function upload() {
     if (isLoading) return;
 
@@ -83,3 +95,15 @@ function setGoBtnLoadAnim(activate) {
     document.getElementById("go-img").classList.toggle("hide", activate)
     document.getElementById("go-load").classList.toggle("hide", !activate)
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+    const input = document.getElementById("file");
+
+    try {
+        document.getElementById("file-size").innerText = formatBytes(input.files[0]['size']);
+    } catch {}
+    
+    input.addEventListener("change", function() {
+        document.getElementById("file-size").innerText = formatBytes(input.files[0]['size']);
+    })
+})
