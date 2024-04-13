@@ -12,10 +12,14 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 function upload() {
     if (isLoading) return;
-    setGoBtnLoadAnim(true);
 
     const file = document.getElementById("file").files[0];
-    if (!file) return;
+    if (!file) {
+        showErr("No file selected.")
+        return;
+    }
+
+    setGoBtnLoadAnim(true);
 
     console.log(`Attempting to upload ${file['name']} (${file['size']} bytes)`);
 
